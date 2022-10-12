@@ -73,7 +73,7 @@ public class InMemoryCartRepository implements CartPersistencePort {
     		 if (item.getProduct_id()==product_id) 
   
     		 carts.get(cartId-1).getItems().remove(item);
-    		 carts.get(cartId-1).setTotalPrice(carts.get(cartId-1).getTotalPrice()-item.getUnit_price()*quantite );
+    		 //carts.get(cartId-1).setTotalPrice(carts.get(cartId-1).getTotalPrice()-item.getUnit_price()*quantite );
     		 break;
          }
     	 
