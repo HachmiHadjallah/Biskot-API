@@ -68,12 +68,15 @@ public class InMemoryCartRepository implements CartPersistencePort {
    
      
      public void FindItemByProductId(int cartId,int product_id,int quantite) {
+    	// Product product =products.get(product_id); 
     	
     	 for(Item item: carts.get(cartId-1).getItems()) {
     		 if (item.getProduct_id()==product_id) 
-  
+    			 
     		 carts.get(cartId-1).getItems().remove(item);
-    		 //carts.get(cartId-1).setTotalPrice(carts.get(cartId-1).getTotalPrice()-item.getUnit_price()*quantite );
+    		// carts.get(cartId-1).setTotalPrice(carts.get(cartId-1).getTotalPrice()-item.getUnit_price()*quantite );
+    	//	 product.setQuantity_in_stock(product.getQuantity_in_stock()+quantite);  //new 12/10/2022
+    		 
     		 break;
          }
     	 
@@ -82,7 +85,7 @@ public class InMemoryCartRepository implements CartPersistencePort {
      @Override
      public void putItemToCart(int cartId, int product_id, int quantite) {
      	
-    	FindItemByProductId(cartId,product_id,quantite);
+    	FindItemByProductId(cartId,product_id,quantite);  
      	addItemToCart(cartId,product_id-1,quantite);
      }
       
@@ -104,7 +107,7 @@ public class InMemoryCartRepository implements CartPersistencePort {
     	  carts.get(cartId-1).getItems().add(item);
     	  carts.get(cartId-1).setTotalPrice(totalPrice(carts.get(cartId-1).getItems()));
     	
-    	  product.setQuantity_in_stock(product.getQuantity_in_stock()-quantite);
+    	 // product.setQuantity_in_stock(product.getQuantity_in_stock()-quantite); 
     	  
     	  /*test*/System.out.println("Added");
           response="Added";
